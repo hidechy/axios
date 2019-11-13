@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Example</title>
-<link rel="stylesheet" href="/{{ config('app.name') }}/public{{ mix('css/app.css') }}">
+<link rel="stylesheet" href="/{{ config('app.name') }}{{ mix('css/app.css') }}">
 </head>
 <body>
 
     <div id="app">
-        <example-component></example-component>
+        <user-component></user-component>
     </div>
 
-
-<script src="/{{ config('app.name') }}/public{{ mix('js/app.js') }}"></script>
+<script src="/{{ config('app.name') }}{{ mix('js/app.js') }}"></script>
 </body>
 </html>
