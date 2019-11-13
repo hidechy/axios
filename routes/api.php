@@ -6,5 +6,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/userlist' , 'TodoController@getUserList');
-Route::post('/adduser' , 'TodoController@addUser');
+Route::get('/userlist' , 'UserController@getUserList');
+Route::post('/adduser' , 'UserController@addUser');

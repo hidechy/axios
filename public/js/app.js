@@ -1757,6 +1757,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     axios.get('/axios/api/userlist').then(function (response) {
@@ -1765,13 +1767,22 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      atai: ""
+      name: "",
+      email: "",
+      password: ""
     };
   },
   methods: {
     soushin: function soushin() {
-      axios.post('/axios/api/adduser', {
-        atai: this.atai
+      var data = {
+        name: this.name,
+        email: this.email,
+        password: this.password
+      };
+      axios.post('/axios/api/adduser', data).then(function (res) {
+        console.log('success', res.data);
+      })["catch"](function (e) {
+        console.log('validation error', e.response.data.errors);
       });
     }
   }
@@ -37139,26 +37150,74 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-body" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.atai,
-                  expression: "atai"
-                }
-              ],
-              attrs: { type: "text" },
-              domProps: { value: _vm.atai },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.name,
+                    expression: "name"
                   }
-                  _vm.atai = $event.target.value
+                ],
+                attrs: { type: "text" },
+                domProps: { value: _vm.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.name = $event.target.value
+                  }
                 }
-              }
-            }),
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.email,
+                    expression: "email"
+                  }
+                ],
+                attrs: { type: "text" },
+                domProps: { value: _vm.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.email = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.password,
+                    expression: "password"
+                  }
+                ],
+                attrs: { type: "text" },
+                domProps: { value: _vm.password },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.password = $event.target.value
+                  }
+                }
+              })
+            ]),
             _vm._v(" "),
             _c(
               "button",

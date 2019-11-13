@@ -13,7 +13,9 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <input type="text" v-model="atai">
+                        <div><input type="text" v-model="name"></div>
+                        <div><input type="text" v-model="email"></div>
+                        <div><input type="text" v-model="password"></div>
                         <button type="submit" @click="soushin">soushin</button>
                     </div>
                 </div>
@@ -32,12 +34,22 @@
         ,
         data() {
             return {
-                atai: ""
+                name: "",
+                email: "",
+                password: ""
             }
         },
         methods:{
             soushin(){
-                axios.post('/axios/api/adduser', {atai: this.atai});
+                let data = {
+                    name: this.name ,
+                    email: this.email ,
+                    password: this.password
+                };
+
+                axios.post('/axios/api/adduser', data)
+                 .then(res => {console.log('success', res.data)})
+                 .catch(e => {console.log('validation error', e.response.data.errors)});
             }
         }
     }
