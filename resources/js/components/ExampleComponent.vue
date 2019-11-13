@@ -17,7 +17,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            axios.get('/axios/public/api/userlist').then(response => console.log(response));
         }
     }
 </script>
